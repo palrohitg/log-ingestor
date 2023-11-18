@@ -33,37 +33,37 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error opening log file: %s", err)
 	}
-	//defer logFile.Close()
+	defer logFile.Close()
 
-	log.SetOutput(logFile)
+	// Create a custom logger without timestamp prefix
+	logger := log.New(logFile, "", 0)
 
-	http.HandleFunc("/api", handleAPIRequest)
-	http.HandleFunc("/", handleDefault)
+	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
+		logEntry := LogEntry{
+			Level:      "error",
+			Message:    "Failed to connect to DB",
+			ResourceID: "server-1234",
+			Timestamp:  time.Now().UTC(),
+			TraceID:    "abc-xyz-123",
+			SpanID:     "span-456",
+			Commit:     "5e5342f",
+		}
+		logEntry.Metadata.ParentResourceID = "server-0987"
+
+		logJSON, err := json.Marshal(logEntry)
+		if err != nil {
+			logger.Println("Error marshaling log entry:", err)
+			return
+		}
+		logger.Println(string(logJSON))
+		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Fprintf(w, "response sent")
+	})
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Welcome to the application!")
+	})
+
 	fmt.Println("Server is running on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
-}
-
-func handleAPIRequest(w http.ResponseWriter, r *http.Request) {
-	logEntry := LogEntry{
-		Level:      "error",
-		Message:    "Failed to connect to DB",
-		ResourceID: "server-1234",
-		Timestamp:  time.Now().UTC(),
-		TraceID:    "abc-xyz-123",
-		SpanID:     "span-456",
-		Commit:     "5e5342f",
-	}
-	logEntry.Metadata.ParentResourceID = "server-0987"
-	logJSON, err := json.Marshal(logEntry)
-	if err != nil {
-		log.Println("Error marshaling log entry:", err)
-		return
-	}
-	log.Println(string(logJSON))
-	w.WriteHeader(http.StatusInternalServerError)
-	fmt.Fprintf(w, "response sent")
-}
-
-func handleDefault(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Welcome to the application!")
 }

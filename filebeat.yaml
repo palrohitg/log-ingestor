@@ -4,10 +4,6 @@ filebeat.inputs:
     paths:
       - '/var/lib/docker/containers/*/*.log'
       - '/app1/logs/*.log'
-#    json.keys_under_root: true
-#    json.add_error_key: true
-#    fields_under_root: true
-#    json.message_key: log
 
 processors:
   - add_docker_metadata:
@@ -21,7 +17,7 @@ processors:
 output.elasticsearch:
   hosts: ["elasticsearch:9200"]
   indices:
-    - index: "filebeat-deepankar-%{[agent.version]}-%{+yyyy.MM.dd}"
+    - index: "filebeat-dyte-%{[agent.version]}-%{+yyyy.MM.dd}"
 
 logging.json: true
 logging.metrics.enabled: false

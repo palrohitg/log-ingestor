@@ -1,8 +1,2 @@
-2023/11/18 22:09:38 {"level":"error","message":"Failed to connect to DB","resourceID":"server-1234","timestamp":"2023-11-18T16:39:38.91741Z","traceID":"abc-xyz-123","spanID":"span-456","commit":"5e5342f","metadata":{"parentResourceId":"server-0987"}}
-2023/11/18 22:10:11 {"level":"error","message":"Failed to connect to DB","resourceID":"server-1234","timestamp":"2023-11-18T16:40:11.408918Z","traceID":"abc-xyz-123","spanID":"span-456","commit":"5e5342f","metadata":{"parentResourceId":"server-0987"}}
-2023/11/18 22:10:12 {"level":"error","message":"Failed to connect to DB","resourceID":"server-1234","timestamp":"2023-11-18T16:40:12.407978Z","traceID":"abc-xyz-123","spanID":"span-456","commit":"5e5342f","metadata":{"parentResourceId":"server-0987"}}
-2023/11/18 22:10:13 {"level":"error","message":"Failed to connect to DB","resourceID":"server-1234","timestamp":"2023-11-18T16:40:13.479036Z","traceID":"abc-xyz-123","spanID":"span-456","commit":"5e5342f","metadata":{"parentResourceId":"server-0987"}}
-2023/11/18 16:44:27 API request received
-2023/11/18 16:44:27 Error occurred: Something went wrong
-2023/11/18 16:44:29 API request received
-2023/11/18 16:44:29 Error occurred: Something went wrong
+{"level":"error","message":"Failed to connect to DB","resourceID":"server-1234","timestamp":"2023-11-18T17:53:54.715587Z","traceID":"abc-xyz-123","spanID":"span-456","commit":"5e5342f","metadata":{"parentResourceId":"server-0987"}}
+{"level":"error","message":"Failed to connect to DB","resourceID":"server-1234","timestamp":"2023-11-18T17:53:55.714546Z","traceID":"abc-xyz-123","spanID":"span-456","commit":"5e5342f","metadata":{"parentResourceId":"server-0987"}}
