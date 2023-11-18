@@ -33,7 +33,7 @@
 
 
 
-## Logs of Docker Shell
+## :computer: Logs of Docker Shell
 ![Kibana](https://github.com/palrohitg/log-ingestor/assets/40069230/a33a9fbb-be2c-4e9a-8812-338e0f2bbc81)
 ![Terminal](https://github.com/palrohitg/log-ingestor/assets/40069230/b11e1d11-94be-493f-90e1-ae3d39e66557)
 
