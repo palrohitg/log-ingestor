@@ -22,6 +22,7 @@ services:
       - /Users/mipl/Park+/logs-ingestor/filebeat.yaml:/usr/share/filebeat/filebeat.yml:ro
       - /var/lib/docker:/var/lib/docker:ro
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./logs:/app1/logs/
 
   application:
     build: .

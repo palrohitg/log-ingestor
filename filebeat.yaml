@@ -1,21 +1,27 @@
 filebeat.inputs:
   - type: log
+    enabled: true
     paths:
-      - '/app/logs/*.log'
+      - '/var/lib/docker/containers/*/*.log'
+      - '/app1/logs/*.log'
+#    json.keys_under_root: true
+#    json.add_error_key: true
+#    fields_under_root: true
+#    json.message_key: log
 
 processors:
   - add_docker_metadata:
       host: "unix:///var/run/docker.sock"
 
   - decode_json_fields:
-      fields: ["message"]
+      fields: ["message", "application_name", "time"]
       target: "json"
       overwrite_keys: true
 
 output.elasticsearch:
   hosts: ["elasticsearch:9200"]
   indices:
-    - index: "filebeat-%{[agent.version]}-%{+yyyy.MM.dd}"
+    - index: "filebeat-deepankar-%{[agent.version]}-%{+yyyy.MM.dd}"
 
 logging.json: true
 logging.metrics.enabled: false

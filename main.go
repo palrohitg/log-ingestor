@@ -1,11 +1,26 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
+
+type LogEntry struct {
+	Level      string    `json:"level"`
+	Message    string    `json:"message"`
+	ResourceID string    `json:"resourceID"`
+	Timestamp  time.Time `json:"timestamp"`
+	TraceID    string    `json:"traceID"`
+	SpanID     string    `json:"spanID"`
+	Commit     string    `json:"commit"`
+	Metadata   struct {
+		ParentResourceID string `json:"parentResourceId"`
+	} `json:"metadata"`
+}
 
 func main() {
 	// Create logs directory if it doesn't exist
@@ -18,7 +33,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error opening log file: %s", err)
 	}
-	defer logFile.Close()
+	//defer logFile.Close()
 
 	log.SetOutput(logFile)
 
@@ -29,11 +44,24 @@ func main() {
 }
 
 func handleAPIRequest(w http.ResponseWriter, r *http.Request) {
-	log.Println("API request received")
-	// Simulating an error
-	log.Println("Error occurred: Something went wrong")
+	logEntry := LogEntry{
+		Level:      "error",
+		Message:    "Failed to connect to DB",
+		ResourceID: "server-1234",
+		Timestamp:  time.Now().UTC(),
+		TraceID:    "abc-xyz-123",
+		SpanID:     "span-456",
+		Commit:     "5e5342f",
+	}
+	logEntry.Metadata.ParentResourceID = "server-0987"
+	logJSON, err := json.Marshal(logEntry)
+	if err != nil {
+		log.Println("Error marshaling log entry:", err)
+		return
+	}
+	log.Println(string(logJSON))
 	w.WriteHeader(http.StatusInternalServerError)
-	fmt.Fprintf(w, "Error occurred")
+	fmt.Fprintf(w, "response sent")
 }
 
 func handleDefault(w http.ResponseWriter, r *http.Request) {
