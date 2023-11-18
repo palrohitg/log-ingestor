@@ -12,7 +12,6 @@
 * [Kibana](https://www.elastic.co/kibana)
 * [Filebeat](https://www.elastic.co/beats/filebeat)
 * [Docker](https://www.docker.com/)
-s
 
 
 ## :running_woman: Local Installation Guide :
