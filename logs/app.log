@@ -1,2 +1,0 @@
-{"level":"error","message":"Failed to connect to DB","resourceID":"server-1234","timestamp":"2023-11-18T17:53:54.715587Z","traceID":"abc-xyz-123","spanID":"span-456","commit":"5e5342f","metadata":{"parentResourceId":"server-0987"}}
-{"level":"error","message":"Failed to connect to DB","resourceID":"server-1234","timestamp":"2023-11-18T17:53:55.714546Z","traceID":"abc-xyz-123","spanID":"span-456","commit":"5e5342f","metadata":{"parentResourceId":"server-0987"}}
