@@ -24,7 +24,7 @@
 
         docker-compose up 
 
-2. To Setup and Run Log-Ingestor:
+3. To Manually Generating logs :
 
         curl --location 'http://localhost:8080/api' \
         --header 'accept: application/json, text/plain, */*' \
