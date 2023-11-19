@@ -36,7 +36,6 @@
          http://0.0.0.0:5601/app/kibana#/home?_g=() 
 
 
-## :computer: Logs of Docker Shell
 ![Kibana1](https://github.com/palrohitg/log-ingestor/assets/40069230/2569e9d3-6d0f-4f68-ad68-a39cb90c4fa4)
 ![Terminal2](https://github.com/palrohitg/log-ingestor/assets/40069230/c2c690f4-b4ba-48ef-a2e1-ff04a1bad954)
 
